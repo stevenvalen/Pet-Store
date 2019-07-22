@@ -1,0 +1,87 @@
+<a [routerLink] = "['']">Home</a>
+
+<div class="container">
+    <h2>Know of a pet needing a home?</h2>
+    <div class="row">
+        <div class="col-sm-10">
+            <div class="card">
+                <div class="card-body">
+                    <form class="form" autocomplete="off">
+                        <div class="form-group mb-4 row">
+                            <div class="col-lg-11">
+                                <label for="name">Name: </label>
+                                <input type="text" name="name" [(ngModel)]="new_pet.name" required #name="ngModel"
+                                    minlength="3" maxlength="100">
+                                <span *ngFor="let pet of all_pets">
+                                    <span class="text-danger small" *ngIf="pet.name == new_pet.name">Name is a
+                                        duplicate, use a unique name!</span>
+                                    <img *ngIf="pet.name == new_pet.name"
+                                        style="height: 15px; width: 15px; margin-left:2px; "
+                                        src='https://banner2.kisspng.com/20180223/hcw/kisspng-ico-font-awesome-scalable-vector-graphics-icon-red-x-word-no-vector-material-5a90eae643c105.9898124415194467582775.jpg'>
+                                </span><br>
+                                <img *ngIf="!name.valid && !name.pristine"
+                                    style="height: 15px; width: 15px; margin-left:2px; "
+                                    src='https://banner2.kisspng.com/20180223/hcw/kisspng-ico-font-awesome-scalable-vector-graphics-icon-red-x-word-no-vector-material-5a90eae643c105.9898124415194467582775.jpg'>
+                                <span *ngIf="!name.valid && !name.pristine" class="text-danger small">Name needs to be
+                                    at least 3 characters!</span><br>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-4 row">
+                            <div class="col-lg-11">
+                                <label for="type">Type: </label>
+                                <input type="text" name="type" [(ngModel)]="new_pet.type" required #type="ngModel"
+                                    minlength="3" maxlength="100">
+                                <img *ngIf="!type.valid && !type.pristine"
+                                    style="height: 15px; width: 15px; margin-left:2px; "
+                                    src='https://banner2.kisspng.com/20180223/hcw/kisspng-ico-font-awesome-scalable-vector-graphics-icon-red-x-word-no-vector-material-5a90eae643c105.9898124415194467582775.jpg'>
+                                <span *ngIf="!type.valid && !type.pristine" class="text-danger small">Type needs to be
+                                    at least 3 characters!</span><br>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-4 row">
+                            <div class="col-lg-11">
+                                <label for="description">Description: </label>
+                                <input type="text" name="description" [(ngModel)]="new_pet.description" required
+                                    #description="ngModel" minlength="3" maxlength="100">
+                                <img *ngIf="!description.valid && !description.pristine"
+                                    style="height: 15px; width: 15px; margin-left:2px; "
+                                    src='https://banner2.kisspng.com/20180223/hcw/kisspng-ico-font-awesome-scalable-vector-graphics-icon-red-x-word-no-vector-material-5a90eae643c105.9898124415194467582775.jpg'>
+                                <span *ngIf="!description.valid && !description.pristine"
+                                    class="text-danger small">Description needs to be at least 3 characters!</span><br>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-4 row">
+                            <div class="col-lg-11">
+                                <label for="skill1">Skill 1: </label>
+                                <input type="text" name="skill1" [(ngModel)]="new_pet.skills[0].skill">
+                            </div>
+                        </div>
+                        <div class="form-group mb-4 row">
+                            <div class="col-lg-11">
+                                <label for="skill2">Skill 2: </label>
+                                <input type="text" name="skill2" [(ngModel)]="new_pet.skills[1].skill">
+                            </div>
+                        </div>
+                        <div class="form-group mb-4 row">
+                            <div class="col-lg-11">
+                                <label for="skill3">Skill 3: </label>
+                                <input type="text" name="skill3" [(ngModel)]="new_pet.skills[2].skill">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="button-group">
+                                <button class="btn btn-primary" *ngIf="name.valid && type.valid && description.valid"
+                                    (click)="addPet()" [routerLink]="['']">Add a pet!</button>
+                                <button class="btn btn-danger ml-1" [routerLink]="['']">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

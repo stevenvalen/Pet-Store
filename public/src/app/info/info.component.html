@@ -1,0 +1,15 @@
+<a [routerLink]="['']">Home</a>
+<div class="container">
+    <h3>Details about {{pet.name}}</h3>
+    <h5>Pet Type:</h5>
+    <p>{{pet.type}}</p>
+    <h5>Description:</h5>
+    <p>{{pet.description}}</p>
+    <h5>Skills:</h5>
+    <p *ngFor="let skill of pet_skills">{{skill.skill}}</p>
+    <h5>Likes:</h5>
+    <p>{{pet.likes}}</p>
+    <button class="btn btn-primary disabled" *ngIf="isDisabled">Like this pet!</button>
+    <button class="btn btn-primary" (click)="likepet()" *ngIf="!isDisabled">Like this pet!</button>
+    <button class="btn btn-primary ml-2" [routerLink]="['']" (click)="delete()">Adopt this pet!</button>
+</div>
